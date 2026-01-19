@@ -2,22 +2,25 @@
    GENERAL
    ============================ */
 :root {
-  --bg: #0b0c0f;
-  --fg: #c7c7a6;
-  --accent: #8affc1;
-  --border: #2a2a2a;
+  --bg: #0b0f0a;
+  --fg: #a8bfa8;
+  --accent: #1aad19;
+  --border: #1c2b1c;
 }
 
 * {
   box-sizing: border-box;
 }
 
-body {
+body, html {
   margin: 0;
-  font-family: "IBM Plex Mono", "Courier New", monospace;
+  min-height: 100%;
+  font-family: "Courier New", Courier, monospace;
   background: var(--bg);
   color: var(--fg);
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ============================
@@ -32,6 +35,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
 }
 
 nav a {
@@ -61,7 +65,8 @@ button:hover {
 /* ============================
    MAIN CONTAINER
    ============================ */
-.container {
+main.container {
+  flex: 1;
   max-width: 1000px;
   margin: auto;
   padding: 64px 32px;
@@ -71,24 +76,27 @@ button:hover {
    TYPOGRAPHY / HERO
    ============================ */
 h1 {
-  font-size: 3.2rem;
-  margin-bottom: 0.2em;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin-bottom: 0.5em;
   color: var(--accent);
   letter-spacing: 1px;
+  font-family: 'Buda', monospace;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   font-weight: 400;
   color: var(--fg);
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Buda', monospace;
 }
 
 h3 {
   color: var(--accent);
   font-weight: 500;
   margin-bottom: 1rem;
+  font-family: 'Buda', monospace;
 }
 
 /* ============================
@@ -232,20 +240,64 @@ main section {
 /* ============================
    FOOTER
    ============================ */
-body, html {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-main.container {
-    flex: 1;
-}
-
 footer {
     border-top: 1px solid var(--border);
     padding: 2rem 1rem;
     text-align: center;
     font-size: 0.85rem;
     color: #8a8a8a;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .container {
+        padding: 32px 16px;
+    }
+
+    #articles-grid, .contacts-grid {
+        gap: 16px;
+    }
+
+    .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .contact-icon img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+    .container {
+        padding: 24px 12px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    #articles-grid, .contacts-grid {
+        gap: 12px;
+    }
+
+    .article-card, .contact-card {
+        padding: 16px;
+    }
+
+    .contact-icon img {
+        width: 30px;
+        height: 30px;
+    }
 }
