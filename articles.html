@@ -1,29 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Articles</title>
-		<link rel="stylesheet" href="css/style.css">
-	</head>
-	
-	<body>
-		<header>
-			<nav>
-				<a href="index.html">HOME</a>
-			</nav>
-		</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Edoardo Fornasier</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Matrix Background -->
+    <canvas id="matrix-canvas"></canvas>
+    
+    <!-- Particles Background -->
+    <div id="particles-container"></div>
 
-		<main class="container">
-			<h1>Articles</h1>
-			<div id="articles-grid"></div>
-		</main>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-back">
+                <a href="index.html" class="back-button">
+                    <span class="back-arrow">←</span>
+                    <span>BACK TO HOME</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 
-		<script src="js/blog.js"></script>
-	</body>
+    <!-- Main Content -->
+    <main>
+        <!-- Articles Section -->
+        <section class="articles-section">
+            <div class="container">
+                <h1 class="section-title">
+                    <span class="glitch-text" data-text="ARTICLES">ARTICLES</span>
+                </h1>
+                
+                <!-- Articles Grid -->
+                <div id="articles-grid" class="articles-grid">
+                    <!-- Articles will be dynamically loaded here -->
+                </div>
 
-	<footer>
-		<p>
-			© 2026 Edoardo Fornasier — Personal portfolio.<br>
-		</p>
-	</footer>
+                <!-- Article Detail Modal -->
+                <div id="article-modal" class="article-modal">
+                    <div class="article-modal-content">
+                        <div class="article-modal-header">
+                            <h2 id="article-title"></h2>
+                            <button class="btn-close" onclick="closeArticle()">&times;</button>
+                        </div>
+                        <div class="article-modal-body">
+                            <div id="article-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Edoardo Fornasier. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/articles.js"></script>
+</body>
 </html>

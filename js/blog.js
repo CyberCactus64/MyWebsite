@@ -2,7 +2,7 @@ const articles = [
   {
     title: "Article 1",
     file: "article1.md",
-    description: "First article.",
+    description: "QAAQA article.",
     date: "2026-01-19"
   },
   {

@@ -1,80 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Portfolio</title>
-		<link href="https://fonts.googleapis.com/css2?family=Buda&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edoardo Fornasier - Cybersecurity Analyst</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="terminal-loader">
+                <div class="terminal-text">> INITIALIZING...</div>
+                <div class="cursor-blink">_</div>
+            </div>
+        </div>
+    </div>
 
-	<body>
-		<header>
-			<button id="terminal-toggle">OPEN A TERMINAL</button>
-			<nav>
-				<a href="articles.html">ARTICLES</Article></a>
-				<a href="contacts.html">CONTACT</a>
-			</nav>
-		</header>
-		
-		<main class="container">
-			<section>
-				<h1>Edoardo Fornasier</h1>
-				<h2>Cyber Security Specialist</h2>
-				<p>
-				I'm a cyber security passionate, interested in understanding how systems behave when things don't go as planned.<br><br>
-				I spend a lot of time observing, breaking down, and studying technology from the inside: logs, networks, binaries, signals, and the small details that usually get ignored.<br><br>
-				I like defensive work, but I'm equally drawn to offensive techniques and low-level experimentation, because they reveal how software and hardware really interact.<br><br>
-				
-				This site is a personal space to collect thoughts, experiments, and technical notes: a quiet exploration of security, systems, and how they fail.
-				</p>
-			</section>
+    <!-- Matrix Background -->
+    <canvas id="matrix-canvas"></canvas>
+    
+    <!-- Particles Background -->
+    <div id="particles-container"></div>
 
-			<section>
-				<h3>Technical Skills</h3>
-				<ul>
-					<li>Cyber Security, Network & Endpoint Monitoring</li>
-					<li>Incident Detection, Analysis & Response</li>
-					<li>SIEM & XDR platforms (Wazuh, WithSecure, Sophos)</li>
-					<li>Linux (Terminal Commands, Bash/Shell)</li>
-					<li>Windows (Security logs, PowerShell)</li>
-					<li>AWS, Keycloak, Office 365</li>
-					<li>Nmap, Nessus, Metasploit, Burp Suite</li>
-					<li>Hydra, Gobuster, Nikto, SQLmap</li>
-					<li>John the Ripper, Aircrack-ng</li>
-					<li>Docker, Git, GitHub</li>
-					<li>Visual Studio, Visual Studio Code</li>
-					<li>VMware Workstation Pro, VirtualBox</li>
-					<li>Python, C, C++, C#, Go, Java</li>
-					<li>SQL, JavaScript</li>
-					<li>Arduino, ESP32 and other microcontrollers</li>
-				</ul>
-			</section>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="glitch-text" data-text="EF">EF</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">HOME</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#skills" class="nav-link">SKILLS</a></li>
+                <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="nav-articles">
+                <a href="articles.html" class="articles-link">ARTICLES</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-			<section>
-				<h3>Experience</h3>
-				<p><strong>SOC Analyst</strong> | 08-2025 - Present</p>
-				<p><strong>Security Analyst</strong> | 01-2025 - 07-2025</p>
-				<p><strong>Other experiences on my LinkedIn</strong> | 2022-2025</p>
-			</section>
-		</main>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="EDOARDO FORNASIER">EDOARDO FORNASIER</h1>
+                <div class="typing-text">
+                    <span class="typed-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    I'm a Cybersecurity Analyst who has been passionate about technology since childhood, with a strong interest in programming and cybersecurity.<br><br>
+                    I enjoy understanding how systems behave, especially under pressure or during attacks and I believe that
+                    working in security requires both defending systems and understanding how vulnerabilities work.<br><br>
+                    This site is my personal space where I keep notes, share experiences, and explore topics related to cybersecurity.<br>
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="openTerminal()">
+                        <span>LAUNCH TERMINAL</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToSection('contact')">
+                        <span>GET IN TOUCH</span>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-rain"></div>
+            </div>
+        </section>
 
-		<div id="terminal-overlay">
-			<div id="terminal-window">
-				<div id="terminal-output"></div>
-				<div class="terminal-input">
-					<span class="prompt">guest@system:~$</span>
-					<input id="terminal-input" autocomplete="off">
-				</div>
-			</div>
-		</div>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="glitch-text" data-text="ABOUT">ABOUT</span>
+                </h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            My journey in cybersecurity combines formal education with hands-on experience in real-world security operations. 
+                            Working with SIEM platforms, EDR solutions, and incident response has taught me that effective security 
+                            requires both technical knowledge and analytical thinking.
+                        </p>
+                        <p>
+                            In my free time, I experiment with cybersecurity tools and develop custom software and small malware 
+                            to understand attack methodologies from an attacker's perspective. This helps me better defend systems 
+                            by knowing exactly how they can be compromised.
+                        </p>
+                        <p>
+                            I believe continuous learning is essential in cybersecurity, so I'm always exploring new techniques, 
+                            tools, and approaches to stay ahead of emerging threats and improve my defensive capabilities.
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="2">0</div>
+                            <div class="stat-label">YEARS EXPERIENCE</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="10">0</div>
+                            <div class="stat-label">SECURITY TOOLS</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="6">0</div>
+                            <div class="stat-label">PROJECTS COMPLETED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-		<script src="js/terminal.js"></script>
-	</body>
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="glitch-text" data-text="SKILLS">SKILLS</span>
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-card" data-skill="security">
+                        <div class="skill-front">
+                            <img src="images/security-logo.svg" alt="Security" class="skill-icon-svg">
+                            <h3>Security</h3>
+                            <p>Cybersecurity & Monitoring</p>
+                        </div>
+                        <div class="skill-back">
+                            <ul>
+                                <li>Wazuh SIEM Management</li>
+                                <li>WithSecure EDR Monitoring</li>
+                                <li>Sophos EDR Analysis</li>
+                                <li>Microsoft Defender</li>
+                                <li>Nessus & OpenVAS</li>
+                                <li>AnyRun and VirusTotal Analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card" data-skill="offensive">
+                        <div class="skill-front">
+                            <img src="images/offensive-logo.svg" alt="Offensive" class="skill-icon-svg">
+                            <h3>Offensive</h3>
+                            <p>Penetration Testing</p>
+                        </div>
+                        <div class="skill-back">
+                            <ul>
+                                <li>Nessus & OpenVAS</li>
+                                <li>Burp Suite</li>
+                                <li>Metasploit Framework</li>
+                                <li>Hydra & Wireshark</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card" data-skill="systems">
+                        <div class="skill-front">
+                            <img src="images/systems-logo.svg" alt="Systems" class="skill-icon-svg">
+                            <h3>Systems</h3>
+                            <p>OS & Virtualization</p>
+                        </div>
+                        <div class="skill-back">
+                            <ul>
+                                <li>Linux (Bash/Shell)</li>
+                                <li>Windows Security</li>
+                                <li>AWS (EC2, S3, CloudWatch)</li>
+                                <li>Docker & Proxmox</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card" data-skill="development">
+                        <div class="skill-front">
+                            <img src="images/development-logo.svg" alt="Development" class="skill-icon-svg">
+                            <h3>Development</h3>
+                            <p>Programming Languages</p>
+                        </div>
+                        <div class="skill-back">
+                            <ul>
+                                <li>Python, C#, C++, Go</li>
+                                <li>JavaScript, HTML, CSS</li>
+                                <li>PowerShell, Bash</li>
+                                <li>SQL, Git, GitHub</li>
+                                <li>Arduino, ESP32</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-	<footer>
-		<p>
-			© 2026 Edoardo Fornasier — Personal portfolio.<br>
-		</p>
-	</footer>
+        <!-- Experience Section -->
+        <section id="experience" class="experience">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="glitch-text" data-text="EXPERIENCE">EXPERIENCE</span>
+                </h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Sep 2025 - Present</div>
+                            <h3>Cybersecurity Analyst</h3>
+                            <p><strong>BlueIT SpA - Monza, Italy</strong><br>
+                            • Wazuh SIEM maintenance, fine-tuning and management<br>
+                            • Log monitoring and analysis via Wazuh SIEM<br>
+                            • Incident response and monitoring with WithSecure EDR<br>
+                            • Server and endpoint onboarding on EDR with on-site system administrators<br>
+                            • Sophos EDR event monitoring and client alerting</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Jan 2025 - Jul 2025</div>
+                            <h3>Cybersecurity Specialist</h3>
+                            <p><strong>Eventi Telematici srl - Sesto San Giovanni, Italy</strong><br>
+                            • AWS management (EC2, S3, CloudWatch)<br>
+                            • C# development for AWS automation tools<br>
+                            • Java extension development for Keycloak<br>
+                            • On-premise Wazuh installation and monitoring<br>
+                            • Proxmox VM creation and management<br>
+                            • Docker service management<br>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023 - 2025</div>
+                            <h3>Cyber Defence Diploma</h3>
+                            <p><strong>ITS Angelo Rizzoli</strong><br>
+                            Cyber Defence Technician specializing in security operations and incident response. 
+                            Trained in SIEM management, threat analysis, and defensive cybersecurity techniques 
+                            with hands-on experience in modern security tools and methodologies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="glitch-text" data-text="CONTACT">CONTACT</span>
+                </h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>Feel free to reach out for collaborations!</p>
+                        <div class="contact-links">
+                            <a href="mailto:edoardo.enricomaria.fornasier@gmail.com" class="contact-link">
+                                <img src="images/email-logo.svg" alt="Email" class="contact-icon">
+                                <span>Email</span>
+                            </a>
+                            <a href="https://github.com/CyberCactus64" class="contact-link">
+                                <img src="images/github-logo.svg" alt="GitHub" class="contact-icon">
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/edoardo-fornasier-b17882266" class="contact-link">
+                                <img src="images/linkedin-logo.svg" alt="LinkedIn" class="contact-icon">
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Terminal Modal -->
+    <div id="terminal-modal" class="terminal-modal">
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="btn-close" onclick="closeTerminal()"></span>
+                    <span class="btn-minimize"></span>
+                    <span class="btn-maximize"></span>
+                </div>
+                <div class="terminal-title">root@cybersec:~</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-output" id="terminal-output"></div>
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">guest@portfolio:~$</span>
+                    <input type="text" id="terminal-input" class="terminal-input" autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Edoardo Fornasier. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
 </html>
